@@ -83,13 +83,18 @@
 }
 
 ._acoes tr {
+  border: 1px solid 	#4682B4; 
   background-color: #1D3759;
   height: 40px;
 }
 
+._acoes th {
+  border: 2px solid 	#4682B4; 
+}
+
 ._acoes th, tr, td {
+  
   color-scheme: dark; 
-  border: none;
 }
 
 ._acoes .linha-mensagem td {
@@ -107,6 +112,10 @@
 
 ._acoes .botao-tabela:hover {
   background-color: #FF3B30;
+}
+._acoes  ._borda {
+  border-bottom: 3px solid 	#4682B4;
+
 }
 
 @media screen and (max-width: 950px) {

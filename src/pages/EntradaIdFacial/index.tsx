@@ -24,9 +24,7 @@ return(
     />
   </div>
   <div className="btn">
-    <Link to='idfacial' className="botao_principal">
-      Face ID
-    </Link>
+    <Link to='idfacial' className="botao_principal">Face ID</Link>
   </div>
 </div>
 
