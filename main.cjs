@@ -11,7 +11,7 @@ function createWindow() {
     height: 600
   });
 
-  mainWindow.loadURL('http://localhost:5173');
+  mainWindow.loadURL('http://localhost:5174');
 
   
 }

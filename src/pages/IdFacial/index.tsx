@@ -46,16 +46,17 @@ import { Link } from "react-router-dom"
 
 import React, { useState, useRef, MutableRefObject } from 'react';
 import Webcam from 'react-webcam';
+import { WebcamCapture } from "../../components/WebcamCapture";
 
 function BiometriaFacial() {
   const webcamRef: MutableRefObject<any> = useRef(null); // Use any if you're unsure of the type
 
   const [isWebcamOn, setIsWebcamOn] = useState(false);
+  const [imgsrc, setImgSrc] = useState(null);
+
 
   const startWebcam = () => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((stream) => {
+    navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
         if (webcamRef.current) {
           (webcamRef.current as any).srcObject = stream; // Use 'as any' to avoid TypeScript error
           setIsWebcamOn(true);
@@ -74,19 +75,33 @@ function BiometriaFacial() {
     }
   };
 
+  const capture = React.useCallback(
+    () => {
+      const imageSrc = webcamRef.current.getScreenshot();
+      setImgSrc(imageSrc)
+    },
+    [webcamRef]
+  );
+
   return (
     
-    <section className="grid">
-    <div className="webCam">
+    <>
+    <WebcamCapture></WebcamCapture>
     
-      <Webcam ref={webcamRef} />
-      {isWebcamOn ? (
-        <button onClick={stopWebcam}>Stop Webcam</button>
-      ) : (
-        <button onClick={startWebcam}>Start Webcam</button>
-      )}
-    </div>
-    </section>
+    </>
+    // <section className="grid">
+    // <div className="webCam">
+    
+    //   <Webcam ref={webcamRef} />
+    //   {isWebcamOn ? (
+    //     <button onClick={stopWebcam}>Stop Webcam</button>
+    //   ) : (
+    //     <button onClick={startWebcam}>Start Webcam</button>
+    //   )}
+    // </div>
+    // <button onClick={capture}>Tirar foto</button>
+    // <span>{imgsrc}</span>
+    // </section>
   );
 }
 
