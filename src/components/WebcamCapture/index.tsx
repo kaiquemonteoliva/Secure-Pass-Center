@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Webcam from "react-webcam";
+import "./style.css"
 
 
 const WebcamComponent = () => <Webcam />;
@@ -20,6 +21,11 @@ export const WebcamCapture = () => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImage(imageSrc)
     }, []);
+
+    const enviarImagem = () => {
+        // Pegar o state -> image
+        // Criar requisicao POST para a API -> axios
+    }
 
 
     return (
@@ -50,6 +56,8 @@ export const WebcamCapture = () => {
                         className="webcam-btn">Capture</button>
                 }
             </div>
+
+
         </div>
     );
 };
